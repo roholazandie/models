@@ -99,3 +99,8 @@ tutorials/embedding/text8
 tutorials/embedding/questions-words.txt
 
 samples/outreach/blogs/segmentation_blogpost/carvana-image-masking-challenge/
+
+official/transformer/data/*
+official/transformer/model_base/*
+official/transformer/model_big/*
+official/transformer/model_tiny/*

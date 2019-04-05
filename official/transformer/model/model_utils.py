@@ -105,6 +105,5 @@ def get_padding_bias(x):
   with tf.name_scope("attention_bias"):
     padding = get_padding(x)
     attention_bias = padding * _NEG_INF
-    attention_bias = tf.expand_dims(
-        tf.expand_dims(attention_bias, axis=1), axis=1)
+    attention_bias = tf.expand_dims(tf.expand_dims(attention_bias, axis=1), axis=1)
   return attention_bias

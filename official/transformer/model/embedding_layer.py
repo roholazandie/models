@@ -27,7 +27,7 @@ from official.utils.accelerator import tpu as tpu_utils
 class EmbeddingSharedWeights(tf.layers.Layer):
   """Calculates input embeddings and pre-softmax linear with shared weights."""
 
-  def __init__(self, vocab_size, hidden_size, method="gather"):
+  def  __init__(self, vocab_size, hidden_size, method="gather"):
     """Specify characteristic parameters of embedding layer.
 
     Args:
@@ -103,7 +103,7 @@ class EmbeddingSharedWeights(tf.layers.Layer):
       batch_size = tf.shape(x)[0]
       length = tf.shape(x)[1]
 
-      x = tf.reshape(x, [-1, self.hidden_size])
-      logits = tf.matmul(x, self.shared_weights, transpose_b=True)
+      x = tf.reshape(x, [-1, self.hidden_size])#(todo rooh)this looks unncessary for the current input it gets because it's already has the proper shape at the last dim
+      logits = tf.matmul(x, self.shared_weights, transpose_b=True)#(todo rooh) this step looks strange because usually we use a Dense layer to project all to vocab size and not use the shared_weights
 
       return tf.reshape(logits, [batch_size, length, self.vocab_size])
