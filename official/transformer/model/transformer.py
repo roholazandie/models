@@ -275,10 +275,10 @@ class PrePostProcessingWrapper(object):
         y = self.layer(y, *args, **kwargs)
 
         # Postprocessing: apply dropout and residual connection
-        # todo(rooh) it looks like here we do normalize and then add rather than add and normalize
+
         if self.train:
             y = tf.nn.dropout(y, 1 - self.postprocess_dropout)
-        return x + y
+        return x + y # todo(rooh) the output of attention(y) always map back to the space of x that's why we can add x and y
 
 
 class EncoderStack(tf.layers.Layer):
